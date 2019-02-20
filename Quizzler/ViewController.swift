@@ -70,8 +70,13 @@ class ViewController: UIViewController {
     func checkAnswer(upPickedAnswer: Bool) {
         let correctAnswer = questionBank.questions[curQuestionIndex].answer;
         
-        
-        curScore = correctAnswer == upPickedAnswer ? (curScore + 1) : curScore;
+        if (correctAnswer == upPickedAnswer) {
+            curScore += 1;
+            
+            ProgressHUD.showSuccess("Correct");
+        } else {
+            ProgressHUD.showError("Wrong!");
+        }
     }
     
     func startOver() {
